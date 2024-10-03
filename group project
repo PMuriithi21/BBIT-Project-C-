@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <random>
+#include <fstream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+// Define structures for Team and Fixture
+struct Team {
+  string name;
+    string town;
+    string stadium;
+};
+
+struct Fixture {
+    Team homeTeam;
+    Team awayTeam;
+    int leg;
+    int weekend;
+};
+// Function to read teams from a CSV file
+vector<Team> readTeamsFromCSV(const string& filename) {
+    vector<Team> teams;
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Error opening file: " << filename << endl;
+        return teams;
+    }
